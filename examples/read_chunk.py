@@ -9,7 +9,6 @@ chx = 0
 chz = 0
 
 import os
-from PIL import Image
 import _path
 #import anvil
 
