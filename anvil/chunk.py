@@ -89,7 +89,7 @@ class Chunk:
         ``self.data['TileEntities']`` as an attribute for easier use
     """
 
-    __slots__ = ("version", "data", "x", "z", "tile_entities")
+    __slots__ = ("version", "data", "x", "z", "tile_entities", "lastUpdate")
 
     def __init__(self, nbt_data: nbt.NBTFile):
         try:
@@ -107,6 +107,7 @@ class Chunk:
             self.tile_entities = self.data["TileEntities"]
         self.x = self.data["xPos"].value
         self.z = self.data["zPos"].value
+        self.lastUpdate = self.data["LastUpdate"].value
 
     def get_section(self, y: int) -> nbt.TAG_Compound:
         """
