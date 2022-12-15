@@ -4,9 +4,11 @@ Needs a textures folder with a block folder inside
 """
 import sys
 
-sys.path.insert(0, 'D:\Dockyard\LCServer\anvil')
+# sys.path.insert(0, 'D:\Dockyard\LCServer\anvil-parser\anvil')
+sys.path.insert(0, '..\\..\\anvil-parser\\anvil')
 
-directory = 'D:\\Dockyard\\LCWorld\\world\\region'
+# directory = 'D:\\Dockyard\\LCWorld\\world\\region'
+directory = '..\\..\\..\\LCWorld\\world\\region'
 # region = 'D:\\Dockyard\\LCWorld\\world\\region\\r.0.0.mca'
 chx = 0
 chz = 0
