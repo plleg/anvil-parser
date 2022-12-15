@@ -9,7 +9,7 @@ sys.path.insert(0, '..\\..\\anvil-parser\\anvil')
 
 # directory = 'D:\\Dockyard\\LCWorld\\world\\region'
 directory = '..\\..\\..\\LCWorld\\world\\region'
-# region = 'D:\\Dockyard\\LCWorld\\world\\region\\r.0.0.mca'
+## region = 'D:\\Dockyard\\LCWorld\\world\\region\\r.0.0.mca'
 chx = 0
 chz = 0
 
