@@ -20,6 +20,7 @@ from datetime import datetime
 
 firstDate = sys.maxsize
 lastDate = 0
+regionCnt = 0
 
 startTime = datetime.now()
 
@@ -29,6 +30,7 @@ for filename in os.scandir( directory ):
         #print("fn:", filename.path)
         region = anvil.Region.from_file(filename.path)
         if len( region.data ) > 0:
+            regionCnt = regionCnt + 1
             for chx in range( 0, 31 ):
                 for chz in range( 0, 31 ):
                         # nbt_data = region.chunk_data(chx, chz)
@@ -42,6 +44,7 @@ for filename in os.scandir( directory ):
                         
 stopTime = datetime.now()
 
+print( "Regions: ", regionCnt )
 print( "Start: ", startTime.strftime("%H:%M:%S"))
 print( "Stop : ", stopTime.strftime("%H:%M:%S"))
 print( "firstDate: ", firstDate )
