@@ -1,14 +1,23 @@
+#!/usr/bin/env python
+
 """
 Generates a image of the top view of a chunk
 Needs a textures folder with a block folder inside
 """
+import os
 import sys
 
 # sys.path.insert(0, 'D:\Dockyard\LCServer\anvil-parser\anvil')
 sys.path.insert(0, '..\\..\\anvil-parser\\anvil')
+print( "CWD: ", os.getcwd() )
+print( "Parent: ", os.path.dirname( os.getcwd() ) )
+print( "Args: ", sys.argv )
+## os.abort()
 
 # directory = 'D:\\Dockyard\\LCWorld\\world\\region'
-directory = '..\\..\\..\\LCWorld\\world\\region'
+# directory = '..\\..\\..\\LCWorld\\world\\region'
+# directory = '..\\..\\..\\FRWorld\\world\\region'
+directory = sys.argv[1]
 ## region = 'D:\\Dockyard\\LCWorld\\world\\region\\r.0.0.mca'
 chx = 0
 chz = 0
@@ -21,6 +30,7 @@ from datetime import datetime
 firstDate = sys.maxsize
 lastDate = 0
 regionCnt = 0
+chunkCnt = 0
 
 startTime = datetime.now()
 
@@ -38,15 +48,17 @@ for filename in os.scandir( directory ):
                         #     chunk = anvil.Chunk(nbt_data)
                         #     if chunk.lastUpdate < firstDate: firstDate = chunk.lastUpdate
                         #     if chunk.lastUpdate > lastDate: lastDate = chunk.lastUpdate
+                        chunkCnt = chunkCnt + 1
                         tstamp = region.chunk_timestamp(chx, chz)
                         if (tstamp > 0) and (tstamp < firstDate): firstDate = tstamp
                         if tstamp > lastDate: lastDate = tstamp
                         
 stopTime = datetime.now()
 
-print( "Regions: ", regionCnt )
-print( "Start: ", startTime.strftime("%H:%M:%S"))
-print( "Stop : ", stopTime.strftime("%H:%M:%S"))
-print( "firstDate: ", firstDate )
-print( "lastDate : ", lastDate )
+print( "Regions  : ", f'{regionCnt:,}' )
+print( "Chunks   : ", f'{chunkCnt:,}' )
+print( "Start    : ", startTime.strftime("%H:%M:%S"))
+print( "Stop     : ", stopTime.strftime("%H:%M:%S"))
+print( "firstDate: ", datetime.fromtimestamp( firstDate ) )
+print( "lastDate : ", datetime.fromtimestamp( lastDate ) )
 # print( "L: ", chunk.lastUpdate )
